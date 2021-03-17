@@ -5,7 +5,6 @@
 // sort, and search in a list of integers. 
 // 
 // **************************************************************** 
-import java.util.Scanner; 
 public class IntegerList {
     int[] list; //values in the list 
     //------------------------------------------------------------ 
@@ -34,10 +33,11 @@ public class IntegerList {
     //------------------------------------------------------------ 
     // print -- prints array elements with indices, one per line 
     //------------------------------------------------------------ 
+    @Override
     public String toString() { 
         String s = ""; 
         for (int i=0; i<list.length; i++) 
-        s += i + ":\t" + list[i] + "\n"; 
+            s += i + ":\t" + list[i] + "\n"; 
         return s; 
     } 
     //------------------------------------------------------------ 
@@ -57,9 +57,43 @@ public class IntegerList {
     // sortIncreasing -- uses selection sort 
     //------------------------------------------------------------ 
     public void sortIncreasing() { 
-        for (int i=0; i<list.length-1; i++) { 
-            int minIndex = minIndex(list, i); 
-            swap(list, i, minIndex); 
-        } 
+        int minIndex;
+        for(int i=0; i<list.length-1; i++) {
+            minIndex = i;
+            for(int j=i+1; j<list.length; j++) {
+                if(list[j]<list[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp  = list[i];
+            list[i] = list[minIndex];
+            list[minIndex] = temp;
+        }
+    }
+    
+    public void sortDecreasing() {
+        int minIndex;
+        for(int i=0; i<list.length-1; i++) {
+            minIndex = i;
+            for(int j=i+1; j<list.length; j++) {
+                if(list[j]>list[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp  = list[i];
+            list[i] = list[minIndex];
+            list[minIndex] = temp;
+        }
+    }
+    
+    public int binarySearch(int target) {
+        sortDecreasing();
+        int location = -1;
+        for(int i=0; i<list.length && location == -1; i++) {
+            if(list[i] == target) {
+                location = i;
+            }
+        }
+        return location;
     }
 }

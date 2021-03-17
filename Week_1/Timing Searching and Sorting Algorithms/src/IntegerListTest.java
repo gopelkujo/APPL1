@@ -5,6 +5,7 @@
 // 
 // **************************************************************** 
 import java.util.Scanner; 
+import java.util.*;
 public class IntegerListTest {
     static IntegerList list = new IntegerList(10); 
     static Scanner scan = new Scanner(System.in); 
@@ -38,40 +39,50 @@ public class IntegerListTest {
             case 2: 
                 System.out.println("How big should the list be?"); 
                 list = new IntegerList(scan.nextInt()); 
-                System.out.println("List is created."); Chapter 9: Polymorphism 193 
+                System.out.println("List is created.");
                 break; 
             case 3: 
                 list.randomize(); 
                 System.out.println("List is filled with random elements."); 
                 break; 
             case 4: 
+                System.out.println(System.currentTimeMillis());
                 list.fillSorted(); 
+                System.out.println(System.currentTimeMillis());
                 System.out.println("List is filled with sorted elements."); 
                 break; 
             case 5: 
                 System.out.print("Enter the value to look for: "); 
                 val = scan.nextInt(); 
+                System.out.println(System.currentTimeMillis());
                 loc = list.linearSearch(val); 
+                System.out.println(System.currentTimeMillis());
                 if (loc != -1) 
-                System.out.println("Found at location " + loc); 
+                    System.out.println("Found at location " + loc); 
                 else 
-                System.out.println("Not in list"); 
+                    System.out.println("Not in list"); 
                 break; 
             case 6: 
                 System.out.print("Enter the value to look for: "); 
                 val = scan.nextInt(); 
+                System.out.println(System.currentTimeMillis());
                 loc = list.binarySearch(val); 
+                System.out.println(System.currentTimeMillis());
                 if (loc != -1) 
-                System.out.println("Found at location " + loc); 
+                    System.out.println("Found at location " + loc); 
                 else 
-                System.out.println("Not in list"); 
+                    System.out.println("Not in list"); 
                 break; 
             case 7: 
+                System.out.println(System.currentTimeMillis());
                 list.sortIncreasing(); 
-                System.out.println("List has been sorted."); 
+                System.out.println(System.currentTimeMillis());
+                System.out.println("List has been sorted.");
                 break; 
             case 8: 
+                System.out.println(System.currentTimeMillis());
                 list.sortDecreasing(); 
+                System.out.println(System.currentTimeMillis());
                 System.out.println("List has been sorted."); 
                 break; 
             default: 
