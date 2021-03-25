@@ -28,6 +28,7 @@ public class RatePanel extends JPanel{
         convert_button = new JButton("Convert");
         result = new JLabel(" ------------- ");
         convert_button.addActionListener(new ComboListener());
+        user_input.addActionListener(new ComboListener());
         JLabel position_cleaner = new JLabel(""); // making a good position with position_cleaner
         
         // set positioning
@@ -57,15 +58,15 @@ public class RatePanel extends JPanel{
     public class ComboListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
-            int index = 0;
+            int index = currency_combo_box.getSelectedIndex();
             try {
                 System.out.println(user_input.getText());
-                if(currency_combo_box.getSelectedIndex() != 0)
-                    result.setText(currencyName[currency_combo_box.getSelectedIndex()] + " = " + (rate[currency_combo_box.getSelectedIndex()]*Double.parseDouble(user_input.getText())) + " U.S. Dollars");
+                if(index != 0)
+                    result.setText(currencyName[index] + " = " + (rate[index]*Double.parseDouble(user_input.getText())) + " U.S. Dollars");
                 else
                     showMessageDialog(null, "Select the currency first.");
             } catch(NumberFormatException e) {
-                showMessageDialog(null, "Fill the form please.");
+                showMessageDialog(null, "Fill the form with number please.");
             }
         }
     }

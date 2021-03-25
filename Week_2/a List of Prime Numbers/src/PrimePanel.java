@@ -79,7 +79,7 @@ public class PrimePanel extends JPanel {
                 } 
                 primeList.setText (ans);
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Fill the form with number please.");
+                primeList.setText("Fill the form with number please.");
             }
         }
     }
